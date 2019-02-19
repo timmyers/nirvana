@@ -6,6 +6,9 @@
     "dependencies": {
         "@pulumi/aws": "^0.16.8",
         "@pulumi/eks": "^0.16.6",
-        "@pulumi/pulumi": "^0.16.14"
+        "@pulumi/gcp": "^0.16.8",
+        "@pulumi/kubernetes": "^0.20.2",
+        "@pulumi/pulumi": "^0.16.14",
+        "axios": "^0.18.0"
     }
 }
