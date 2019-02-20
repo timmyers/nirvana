@@ -2,7 +2,7 @@ import * as aws from '@pulumi/aws';
 import * as pulumi from '@pulumi/pulumi';
 import { AWSK8SCluster } from './src/eks_cluster';
 import { GCPK8SCluster } from './src/gcp_cluster';
-import { K8SHelloWorld } from './src/k8s_hello_world';
+import { K8SOpsView } from './src/k8s_opsview';
 import { GCPDNSZone } from './src/gcp_dns_zone'
 import { NameComNameservers } from './src/name_com_nameservers'
 
@@ -20,9 +20,9 @@ import { NameComNameservers } from './src/name_com_nameservers'
     nameServers: dnsZone.dnsZone.apply(d => d.nameServers)
   });
 
-  const helloWorld = new K8SHelloWorld("hello-world", {
+  const opsView = new K8SOpsView("opsview", {
     k8sProvider: cluster.k8sProvider,
-  }, undefined);
+  }, undefined)
 
 })()
 

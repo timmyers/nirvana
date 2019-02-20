@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-ops-view
+spec:
+  rules:
+  - host: "opsview.tmye.me"
+    http:
+      paths:
+      - backend:
+          serviceName: kube-ops-view
+          servicePort: 80
