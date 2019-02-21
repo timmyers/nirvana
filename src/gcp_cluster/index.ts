@@ -13,10 +13,13 @@ class GCPK8SCluster extends pulumi.ComponentResource  {
     }, this)
 
     this.k8sProvider = cluster.k8sProvider;
+  
+    const defaultOpts = {
+      parent: this,
+      providers: { kubernetes: this.k8sProvider }
+    } 
 
-    const externalDns = new GKEExternalDNS("external-dns", {
-      k8sProvider: this.k8sProvider
-    }, this)
+    const externalDns = new GKEExternalDNS("external-dns", {}, defaultOpts);
 
     this.registerOutputs({
       k8sProvider: this.k8sProvider,

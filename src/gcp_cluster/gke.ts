@@ -10,7 +10,7 @@ class GKECluster extends pulumi.ComponentResource  {
   k8sProvider: k8s.Provider
 
   constructor(name: string, {} : GKEClusterOptions, parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
-    super("nirvana:gcp-cluster", name, {}, { parent, ...opts });
+    super("nirvana:gcp-cluster", name, {}, { parent, ...opts, });
 
     const defaultOpts = { parent: this }
 
@@ -20,6 +20,10 @@ class GKECluster extends pulumi.ComponentResource  {
         {
           name: "default",
           initialNodeCount: 1,
+          autoscaling: {
+            minNodeCount: 1,
+            maxNodeCount: 5
+          },
           nodeConfig: {
             machineType: "g1-small",
             diskSizeGb: 30,
@@ -80,9 +84,6 @@ users:
 `;
       });
 
-    this.k8sProvider = new k8s.Provider("k8s", {
-        kubeconfig: k8sConfig,
-    }, defaultOpts);
 
     // Create admin role binding so we can create other role bindings
     const adminClusterRoleBinding = new k8s.rbac.v1beta1.ClusterRoleBinding("admin", {
@@ -99,13 +100,20 @@ users:
       ]
     }, {
       ...defaultOpts,
-      provider: this.k8sProvider,
+      provider: new k8s.Provider("k8s-internal", {
+          kubeconfig: k8sConfig,
+      }, defaultOpts)
     });
 
+    // Wait for cluster and admin role
     this.cluster = pulumi.all([
       cluster.id, 
       adminClusterRoleBinding.id,
     ]).apply(() => cluster)
+
+    this.k8sProvider = new k8s.Provider("k8s", {
+        kubeconfig: adminClusterRoleBinding.id.apply(() => k8sConfig),
+    }, defaultOpts)
 
     this.registerOutputs({ 
       cluster: this.cluster,

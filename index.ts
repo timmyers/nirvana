@@ -3,6 +3,7 @@ import * as pulumi from '@pulumi/pulumi';
 import { AWSK8SCluster } from './src/eks_cluster';
 import { GCPK8SCluster } from './src/gcp_cluster';
 import { K8SOpsView } from './src/k8s_opsview';
+import { K8SArgo } from './src/k8s_argo';
 import { GCPDNSZone } from './src/gcp_dns_zone'
 import { NameComNameservers } from './src/name_com_nameservers'
 
@@ -20,10 +21,17 @@ import { NameComNameservers } from './src/name_com_nameservers'
     nameServers: dnsZone.dnsZone.apply(d => d.nameServers)
   });
 
-  const opsView = new K8SOpsView("opsview", {
-    k8sProvider: cluster.k8sProvider,
-  }, undefined)
+  const opsView = new K8SOpsView("opsview", {}, {
+    providers: {
+      kubernetes: cluster.k8sProvider
+    }
+  });
 
+  const argo = new K8SArgo("argo", {}, {
+    providers: {
+      kubernetes: cluster.k8sProvider
+    }
+  });
 })()
 
 
