@@ -2,14 +2,15 @@ import * as pulumi from '@pulumi/pulumi';
 import * as gcp from '@pulumi/gcp';
 import * as k8s from '@pulumi/kubernetes';
 
-interface GKEClusterOptions {
+interface Options {
+  machineType: string
 };
 
 class GKECluster extends pulumi.ComponentResource  {
   cluster: pulumi.Output<gcp.container.Cluster>
   k8sProvider: k8s.Provider
 
-  constructor(name: string, {} : GKEClusterOptions, parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
+  constructor(name: string, { machineType } : Options, parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
     super("nirvana:gcp-cluster", name, {}, { parent, ...opts, });
 
     const defaultOpts = { parent: this }
@@ -19,13 +20,13 @@ class GKECluster extends pulumi.ComponentResource  {
       nodePools: [
         {
           name: "default",
-          initialNodeCount: 1,
+          initialNodeCount: 2,
           autoscaling: {
             minNodeCount: 1,
             maxNodeCount: 5
           },
           nodeConfig: {
-            machineType: "g1-small",
+            machineType,
             diskSizeGb: 30,
             diskType: "pd-standard",
             oauthScopes: [

@@ -16,11 +16,15 @@ class K8SArgo extends pulumi.ComponentResource  {
       metadata: { name: "argo" }
     }, { parent: this });
 
+    const nscd = new k8s.core.v1.Namespace("argocd", {
+      metadata: { name: "argocd" }
+    }, { parent: this });
+
     const argo = new k8s.yaml.ConfigGroup("argo", {
       files: `${__dirname}/manifests/*.yml`
     }, {
       ...defaultOpts,
-      dependsOn: [ns]
+      dependsOn: [ns, nscd]
     });
   }
 }

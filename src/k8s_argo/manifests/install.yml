@@ -205,6 +205,7 @@ spec:
     targetPort: 8001
   selector:
     app: argo-ui
+  type: NodePort
 ---
 apiVersion: apps/v1beta2
 kind: Deployment
@@ -262,3 +263,20 @@ spec:
         image: argoproj/workflow-controller:v2.2.1
         name: workflow-controller
       serviceAccountName: argo
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: argo-ui
+  namespace: argo
+  annotations:
+    external-dns.alpha.kubernetes.io/ttl: "10"
+spec:
+  rules:
+  - host: "argo.tmye.me"
+    http:
+      paths:
+      - backend:
+          serviceName: argo-ui
+          servicePort: 80
+

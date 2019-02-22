@@ -8,7 +8,7 @@ interface GCPDNSZoneOptions {
 class GCPDNSZone extends pulumi.ComponentResource  {
   dnsZone: pulumi.Output<gcp.dns.ManagedZone>
 
-  constructor(name: string, { dnsName } : GCPDNSZoneOptions, parent: pulumi.Resource | undefined, opts?: pulumi.ComponentResourceOptions) {
+  constructor(name: string, { dnsName } : GCPDNSZoneOptions,  opts?: pulumi.ComponentResourceOptions) {
     super("nirvana:gcp-dns-zone", name, { }, opts);
 
     const defaultOpts = { parent: this }

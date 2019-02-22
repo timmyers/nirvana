@@ -1,0 +1,3 @@
+- cluster:
+    gcp:
+      machineType: g1-small
