@@ -35,7 +35,7 @@ class K8SJenkins extends pulumi.ComponentResource  {
             "workflow-aggregator:2.6",
             "credentials-binding:1.17",
             "git:3.9.3",
-            "workflow-job:2.3",
+            "workflow-job:2.31",
             "blueocean:1.11.1"
           ]
         },

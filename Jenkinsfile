@@ -1,15 +1,10 @@
-pipeline {
-  agent {
-    kubernetes {
-      //cloud 'kubernetes'
-      label 'mypod'
+// this guarantees the node will use this template
+def label = "mypod-${UUID.randomUUID().toString()}"
+podTemplate(label: label) {
+    node(label) {
+        stage('Run shell') {
+            sh 'echo hello world'
+            sh 'cat Jenkinsfile'
+        }
     }
-  }
-  stages {
-    stage('Run maven') {
-      steps {
-        sh 'echo "hello"'
-      }
-    }
-  }
 }

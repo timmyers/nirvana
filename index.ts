@@ -37,7 +37,8 @@ import { NameComNameservers } from './src/name_com_nameservers'
 
   const ingress = new K8SIngress("ingress", {}, {
     ...defaultOpts,
-    dependsOn: [opsView, jenkins]
+    // dependsOn: [opsView, jenkins]
+    dependsOn: [opsView]
   })
 
   // const argo = new K8SArgo("argo", {}, defaultOpts);
