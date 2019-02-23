@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       cloud 'kubernetes'
-      label 'jenkins-slave-slave'
+      label 'jenkins-jenkins-slave '
     }
   }
   stages {
