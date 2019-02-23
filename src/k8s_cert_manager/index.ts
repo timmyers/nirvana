@@ -12,11 +12,30 @@ class K8SCertManager extends pulumi.ComponentResource  {
 
     const defaultOpts = { parent: this }
 
+    const ns = new k8s.core.v1.Namespace("cert-manager", {
+      metadata: { 
+        name: "cert-manager",
+        labels: {
+          "certmanager.k8s.io/disable-validation": "true"
+        }
+      }
+    }, { parent: this });
+
     const certManager = new k8s.helm.v2.Chart("cert-manager", {
-      namespace: "kube-system",
+      namespace: "cert-manager",
       repo: "stable",
       chart: "cert-manager",
-      version: "0.6.5"
+      version: "0.5.2"
+    }, {
+      ...defaultOpts,
+      dependsOn: [ns]
+    });
+
+    const issuer = new k8s.yaml.ConfigFile("letsencrypt-issuer", {
+      file: `${__dirname}/letsencrypt-issuer.yml`
+    }, {
+      ...defaultOpts,
+      dependsOn: [ns]
     });
   }
 }
