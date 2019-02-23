@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Run maven') {
       steps {
-        sh 'echo "hello"''
+        sh 'echo "hello"'
       }
     }
   }
