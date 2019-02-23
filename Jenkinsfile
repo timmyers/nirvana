@@ -1,5 +1,10 @@
 pipeline {
-    agent { dockerfile true }
+
+    agent { 
+        docker {
+            image 'jenkins/jnlp-slave'
+        }
+    }
 
     stages {
         stage('Build') {
