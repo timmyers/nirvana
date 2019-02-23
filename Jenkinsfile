@@ -6,3 +6,4 @@ podTemplate(label: label) {
             sh 'echo hello world'
         }
     }
+}
