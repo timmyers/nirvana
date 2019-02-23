@@ -1,8 +1,8 @@
 pipeline {
   agent {
     kubernetes {
-      cloud 'kubernetes'
-      label 'jenkins-jenkins-slave '
+      //cloud 'kubernetes'
+      label 'mypod'
     }
   }
   stages {
