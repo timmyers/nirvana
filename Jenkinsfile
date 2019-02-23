@@ -1,4 +1,4 @@
-node('test-pod') {
+node('default') {
     stage('Checkout') {
         checkout scm
     }
