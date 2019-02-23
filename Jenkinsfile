@@ -1,4 +1,4 @@
-node(label: 'jenkins-jenkins-slave') {
+node('jenkins-jenkins-slave') {
     stage('Checkout') {
         checkout scm
     }
