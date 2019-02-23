@@ -1,32 +1,9 @@
-node('jenkins-jenkins-slave') {
-    stage('Checkout') {
-        checkout scm
-    }
-    stage('Build'){
-        container('jnlp') {
-            steps {
-                echo 'Building..'
-            }
+// this guarantees the node will use this template
+def label = "mypod-${UUID.randomUUID().toString()}"
+podTemplate(label: label) {
+    node(label) {
+        stage('Run shell') {
+            sh 'echo hello world'
         }
     }
 }
-
-// pipeline {
-
-//     // agent { 
-//     //     docker {
-//     //         image 'jenkins/jnlp-slave'
-//     //     }
-//     // }
-
-//     stages {
-//         stage('Build') {
-//             container('jnlp') {
-//                 steps {
-//                     echo 'Building..'
-//                 }
-//             }
-
-//         }
-//     }
-// }
