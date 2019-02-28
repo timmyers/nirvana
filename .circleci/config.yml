@@ -30,4 +30,5 @@ jobs:
           name: Pulumi update
           command: |
             source ./google-cloud-sdk/path.bash.inc
+            gcloud auth login
             pulumi update --stack dev --cwd . 
