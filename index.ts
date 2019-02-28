@@ -35,20 +35,20 @@ import { GCPIdentity } from './src/identity/gcp';
     prometheus: false,
   });
 
-  // const defaultOpts = {
-  //   providers: {
-  //     kubernetes: cluster.k8sProvider
-  //   }
-  // };
+  const defaultOpts = {
+    providers: {
+      kubernetes: cluster.k8sProvider
+    }
+  };
 
-  // const opsView = new K8SOpsView("opsview", {}, defaultOpts);
+  const opsView = new K8SOpsView("opsview", {}, defaultOpts);
   // // const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
 
-  // const ingress = new K8SIngress("ingress", {}, {
-  //   ...defaultOpts,
-  //   // dependsOn: [opsView, jenkins]
-  //   dependsOn: [opsView]
-  // })
+  const ingress = new K8SIngress("ingress", {}, {
+    ...defaultOpts,
+    // dependsOn: [opsView, jenkins]
+    dependsOn: [opsView]
+  })
 
   // const argo = new K8SArgo("argo", {}, defaultOpts);
 

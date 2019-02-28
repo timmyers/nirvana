@@ -11,9 +11,9 @@ class GKEExternalDNS extends pulumi.ComponentResource  {
 
     const defaultOpts = { parent: this }
 
-    const fileName = `${__dirname}/external-dns.yml`;
+    const fileName = `external-dns.yml`;
     const externalDNS = new k8s.yaml.ConfigFile(fileName, {
-      file: fileName,
+      file: `${__dirname}/${fileName}`,
     }, defaultOpts);
   }
 }

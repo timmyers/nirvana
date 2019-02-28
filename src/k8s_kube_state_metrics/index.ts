@@ -3,6 +3,7 @@ import * as k8s from '@pulumi/kubernetes';
 import axios from 'axios';
 import * as fs from 'fs';
 import * as tar from 'tar';
+import * as path from 'path';
 
 interface Options {
 
@@ -42,6 +43,7 @@ class K8SKubeStateMetrics extends pulumi.ComponentResource  {
 
       const metrics = new k8s.yaml.ConfigGroup("kubestatemetrics", {
         files: `${__dirname}/${tag}/*.yaml`,
+        files: path.relative(process.cwd(), `${__dirname}/${tag}/*.yml`)
       }, defaultOpts);
 
       this.registerOutputs()

@@ -1,6 +1,6 @@
-
 import * as pulumi from '@pulumi/pulumi';
 import * as k8s from '@pulumi/kubernetes';
+import * as path from 'path';
 
 interface Options {
 
@@ -13,18 +13,8 @@ class K8SOpsView extends pulumi.ComponentResource  {
     const defaultOpts = { parent: this }
 
     const opsView = new k8s.yaml.ConfigGroup("opsview", {
-      files: `${__dirname}/manifests/*.yml`
+      files: path.relative(process.cwd(), `${__dirname}/manifests/*.yml`)
     }, defaultOpts);
-
-    // The ingress must be created after the deployment so health check is picked up
-    // const deployment = opsView.getResource("apps/v1/Deployment", "kube-ops-view")
-
-    // const opsViewIngress = new k8s.yaml.ConfigFile("opsview", {
-    //   file: `${__dirname}/ingress.yml`
-    // }, {
-    //   ...defaultOpts,
-    //   dependsOn: [deployment]
-    // });
   }
 }
 
