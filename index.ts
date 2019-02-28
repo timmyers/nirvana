@@ -9,6 +9,7 @@ import { K8SArgo } from './src/k8s_argo';
 import { K8SKubeStateMetrics } from './src/k8s_kube_state_metrics';
 import { GCPDNSZone } from './src/gcp_dns_zone'
 import { NameComNameservers } from './src/name_com_nameservers'
+import { GCPIdentity } from './src/identity/gcp';
 
 
 (async () => {
@@ -21,27 +22,33 @@ import { NameComNameservers } from './src/name_com_nameservers'
     nameServers: dnsZone.dnsZone.apply(d => d.nameServers)
   });
 
-  const cluster = new GCPK8SCluster("cluster", {
-    machineType: 'g1-small',
-    externalDns: true,
-    certManager: true,
-    prometheus: false,
-  });
-
-  const defaultOpts = {
-    providers: {
-      kubernetes: cluster.k8sProvider
-    }
-  };
-
-  const opsView = new K8SOpsView("opsview", {}, defaultOpts);
-  // const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
-
-  const ingress = new K8SIngress("ingress", {}, {
-    ...defaultOpts,
-    // dependsOn: [opsView, jenkins]
-    dependsOn: [opsView]
+  const gcpIdentity = new GCPIdentity("infra", {
+    project: 'nirvana-232117'
   })
+
+  gcpIdentity.infraCISecret.apply(s => console.log(s));
+
+  // const cluster = new GCPK8SCluster("cluster", {
+  //   machineType: 'g1-small',
+  //   externalDns: true,
+  //   certManager: true,
+  //   prometheus: false,
+  // });
+
+  // const defaultOpts = {
+  //   providers: {
+  //     kubernetes: cluster.k8sProvider
+  //   }
+  // };
+
+  // const opsView = new K8SOpsView("opsview", {}, defaultOpts);
+  // // const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
+
+  // const ingress = new K8SIngress("ingress", {}, {
+  //   ...defaultOpts,
+  //   // dependsOn: [opsView, jenkins]
+  //   dependsOn: [opsView]
+  // })
 
   // const argo = new K8SArgo("argo", {}, defaultOpts);
 
