@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:10
     working_directory: ~/repo
     environment:
       GOOGLE_CREDENTIALS: gcp.json
@@ -13,5 +13,11 @@ jobs:
       - pulumi/login
       - run: yarn
       - run: echo $GCP_JSON > gcp.json
+      - run:
+          name: Install helm
+          command: |
+            wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.0-linux-amd64.tar.gz
+            tar -xf helm-v2.13.0-linux-amd64.tar.gz
+            sudo cp linux-amd64/helm /usr/bin/helm
       - pulumi/update:
           stack: dev
