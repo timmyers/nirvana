@@ -9,9 +9,6 @@ jobs:
     steps:
       - checkout
       - pulumi/login
-      - run:
-          command: |
-            npm install
-            npm run build
+      - run: yarn
       - pulumi/update:
           stack: dev
