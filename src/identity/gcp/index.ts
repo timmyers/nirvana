@@ -19,7 +19,7 @@ class GCPIdentity extends pulumi.ComponentResource  {
     });
 
     const roles = [
-      "roles/container.clusterAdmin",
+      "roles/container.admin",
       "roles/iam.serviceAccountUser",
       "roles/compute.instanceAdmin"
     ];
