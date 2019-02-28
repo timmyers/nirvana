@@ -55,10 +55,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@pulumi/aws@^0.16.0", "@pulumi/aws@^0.16.8":
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-0.16.8.tgz#4115378daad4e761fa35980c8bfb32adc7fc60fe"
-  integrity sha512-kJeLZmp/Q4TH6K0fg4Lz86yS6G6U7ng9zG9SpAJ5DD5Vst3AVywdkMwS6lOWGM3O33SASzydsxnmGdY7MFGpeQ==
+"@pulumi/aws@^0.16.0", "@pulumi/aws@latest":
+  version "0.16.10"
+  resolved "https://registry.yarnpkg.com/@pulumi/aws/-/aws-0.16.10.tgz#d9b13db82cfa670f5a09cc349d3b6802e9d2b4a8"
+  integrity sha512-9vzbjPxUjbvXTUv6lmN0j7o6j4WYfkDbXvpCVOGl2C06udJizXRO5V/QyK8vLwNre/Kl8OY8ruwcNzI5Yn5ToA==
   dependencies:
     "@pulumi/pulumi" "^0.16.14"
     aws-sdk "^2.0.0"
@@ -67,7 +67,7 @@
     read-package-tree "^5.2.1"
     resolve "^1.7.1"
 
-"@pulumi/eks@^0.16.6":
+"@pulumi/eks@latest":
   version "0.16.6"
   resolved "https://registry.yarnpkg.com/@pulumi/eks/-/eks-0.16.6.tgz#7c1f81a61efbc371384ab71abf8ca47a41ef277c"
   integrity sha512-yc3ZIyYC74BEf2pW1mRt+j2WJzXwXW16z8XE4/C51xPLJN5J7xQBhDRhh1IaLEA3tmLCRyGXTIUzB6bty9cjdA==
@@ -77,10 +77,10 @@
     "@pulumi/pulumi" "^0.16.0"
     which "^1.3.1"
 
-"@pulumi/gcp@^0.16.8":
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/@pulumi/gcp/-/gcp-0.16.8.tgz#2a629057a523b3cc6d2250299a0d4c8671e1312f"
-  integrity sha512-cYhGsUk6tDJd93FUK3YnCGvyDMaxWAXWtKpsTu3Nx/O3DX0CUo4MgocDC6mMdyxITkm4i5O7GOzrnMBG6vS1NQ==
+"@pulumi/gcp@latest":
+  version "0.16.9"
+  resolved "https://registry.yarnpkg.com/@pulumi/gcp/-/gcp-0.16.9.tgz#1ebae6705776d8be45681c1e3d9b9ac63e5e48f2"
+  integrity sha512-u1fhTqcWLLoCQZ1TugTwODglrQS3SqrzPdNb0egR6Vyj8X7kEKqrc3o5PHcaswAoP5ogu3Qb6FduF3/h68HWww==
   dependencies:
     "@pulumi/pulumi" "^0.16.14"
     "@types/express" "^4.16.0"
@@ -102,28 +102,26 @@
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/kubernetes@^0.20.2":
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-0.20.2.tgz#e960252e3c64e5ea217d02e638cdb1899e847e09"
-  integrity sha512-oHl/13kONbVtjdwOy8gh+RIb5vGHiO5+cFzOqIy6vlt/FOTTdrAuOceKb/h8za2TNtoUgaHfDgd2OhwnMsj0Fw==
+"@pulumi/kubernetes@latest":
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-0.20.3.tgz#ceb7bcede833bb62783230cd08341ff81ba8c057"
+  integrity sha512-8ZbDuDKZaHp7TWBBurWYStwb5je2C1VEVDJRJis8qju679DO8VQowIr9PSBV3AJJBlrvIM5A4Kg/M8+oDhfZqQ==
   dependencies:
     "@pulumi/pulumi" "^0.16.14"
     "@types/glob" "^5.0.35"
     "@types/js-yaml" "^3.11.2"
-    "@types/mocha" "^5.2.5"
     "@types/node-fetch" "^2.1.4"
     "@types/tmp" "^0.0.33"
     glob "^7.1.2"
     js-yaml "^3.12.0"
-    mocha "^5.2.0"
     node-fetch "^2.3.0"
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/pulumi@^0.16.0", "@pulumi/pulumi@^0.16.14", "@pulumi/pulumi@^0.16.3":
-  version "0.16.14"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-0.16.14.tgz#b8a569a364e46560db0942ac02fe65e3e2288abc"
-  integrity sha512-/tPH0CYe/jig28aAkkt9kdb6isXJ98yfRTv0qj13pZGg3t214JGvEz6KEy0Os6StnsXoSjpxGQIMXhDN4KYH+Q==
+"@pulumi/pulumi@^0.16.0", "@pulumi/pulumi@^0.16.14", "@pulumi/pulumi@^0.16.3", "@pulumi/pulumi@latest":
+  version "0.16.17"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-0.16.17.tgz#765bf6bbd20e00fef34918be27aff2b1a4d21a85"
+  integrity sha512-KOz1JyKFnJkmsGzlk5BskkPRo4lJOHC1vPVyUXiyejzysjy4JDyrOdGa5osCOl6wgJ/aOuaUIxSr75KrVSQ/Mg==
   dependencies:
     google-protobuf "^3.5.0"
     grpc "^1.12.2"
@@ -216,14 +214,14 @@
     "@types/node" "*"
 
 "@types/node@*", "@types/node@latest":
-  version "11.9.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
-  integrity sha512-Zl8dGvAcEmadgs1tmSPcvwzO1YRsz38bVJQvH1RvRqSR9/5n61Q1ktcDL0ht3FXWR+ZpVmXVwN1LuH4Ax23NsA==
+  version "11.9.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.5.tgz#011eece9d3f839a806b63973e228f85967b79ed3"
+  integrity sha512-vVjM0SVzgaOUpflq4GYBvCpozes8OgIIS5gVXVka+OfK3hvnkC1i93U8WiY2OtNE4XUWyyy/86Kf6e0IHTQw1Q==
 
 "@types/node@^10.1.0":
-  version "10.12.26"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.26.tgz#2dec19f1f7981c95cb54bab8f618ecb5dc983d0e"
-  integrity sha512-nMRqS+mL1TOnIJrL6LKJcNZPB8V3eTfRo9FQA2b5gDvrHurC8XbSA86KNe0dShlEL7ReWJv/OU9NL7Z0dnqWTg==
+  version "10.12.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.27.tgz#eb3843f15d0ba0986cc7e4d734d2ee8b50709ef8"
+  integrity sha512-e9wgeY6gaY21on3ve0xAjgBVjGDWq/xUteK0ujsE53bUoxycMkqfnkUgMt6ffZtykZ5X12Mg3T7Pw4TRCObDKg==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -319,9 +317,9 @@ ascli@~1:
     optjs "~3.2.2"
 
 aws-sdk@^2.0.0:
-  version "2.404.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.404.0.tgz#f657db41bc4dab759e897eaa55bc377ac3e15f45"
-  integrity sha512-eQ+hv2hOpcyHUoUUIXcb7TVItzFfgTC0HIribcaDlbF4Kc1p9PSg+2jnK7ibjT6iMcoERx9Hr/vt6Cfc3Sgh5w==
+  version "2.411.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.411.0.tgz#1a6df6c4eed402b43a047c57eaef839279718b34"
+  integrity sha512-8SqJeIoXDfOu4dyiMfaw/outfkXiwDV8cZcGjFD7D+qyAipGuJc+rnzNwAzeKedAz+1KZpxOXrrovDJWKAik5g==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -696,9 +694,9 @@ jmespath@0.15.0:
   integrity sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=
 
 js-yaml@^3.12.0:
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.1.tgz#295c8632a18a23e054cf5c9d3cecafe678167600"
-  integrity sha512-um46hB9wNOKlwkHgiuyEVAybXBjwFUV0Z/RaHJblRd9DXltue9FTYvzCr9ErQrK9Adz5MU4gHWVaNUfdmrC8qA==
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.2.tgz#ef1d067c5a9d9cb65bd72f285b5d8105c77f14fc"
+  integrity sha512-QHn/Lh/7HhZ/Twc7vJYQTkjuCa0kaCcDcjK5Zlk2rvnUpy7DxMJ23+Jc2dcyvltwQVg1nygAVlB2oRDFHoRS5Q==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
@@ -875,9 +873,9 @@ npm-bundled@^1.0.1:
   integrity sha512-8/JCaftHwbd//k6y2rEWp6k1wxVfpFzB6t1p825+cUb7Ym2XQfhwIC5KwhrvzZRJu+LtDE585zVaS32+CGtf0g==
 
 npm-packlist@^1.1.6:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-1.3.0.tgz#7f01e8e44408341379ca98cfd756e7b29bd2626c"
-  integrity sha512-qPBc6CnxEzpOcc4bjoIBJbYdy0D/LFFPUdxvfwor4/w3vxeE0h6TiOVurCEPpQ6trjN77u/ShyfeJGsbAfB3dA==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-1.4.1.tgz#19064cdf988da80ea3cee45533879d90192bbfbc"
+  integrity sha512-+TcdO7HJJ8peiiYhvPxsEDhF3PJFGUGRcFsGve3vxvxdcpO2Z4Z7rkosRM0kWj6LfbK/P0gu3dzk5RU1ffvFcw==
   dependencies:
     ignore-walk "^3.0.1"
     npm-bundled "^1.0.1"
@@ -1259,9 +1257,9 @@ ts-node@^7.0.0:
     yn "^2.0.0"
 
 typescript@^3.0.0:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3.tgz#f1657fc7daa27e1a8930758ace9ae8da31403221"
-  integrity sha512-Y21Xqe54TBVp+VDSNbuDYdGw0BpoR/Q6wo/+35M8PAU0vipahnyduJWirxxdxjsAkS7hue53x2zp8gz7F05u0A==
+  version "3.3.3333"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
+  integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
 
 upath@^1.1.0:
   version "1.1.0"

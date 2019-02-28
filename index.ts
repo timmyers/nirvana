@@ -28,12 +28,12 @@ import { GCPIdentity } from './src/identity/gcp';
 
   // gcpIdentity.infraCISecret.apply(s => console.log(JSON.stringify(s)));
 
-  // const cluster = new GCPK8SCluster("cluster", {
-  //   machineType: 'g1-small',
-  //   externalDns: true,
-  //   certManager: true,
-  //   prometheus: false,
-  // });
+  const cluster = new GCPK8SCluster("cluster", {
+    machineType: 'g1-small',
+    externalDns: true,
+    certManager: true,
+    prometheus: false,
+  });
 
   // const defaultOpts = {
   //   providers: {
