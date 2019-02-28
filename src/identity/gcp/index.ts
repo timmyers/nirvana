@@ -18,11 +18,16 @@ class GCPIdentity extends pulumi.ComponentResource  {
       displayName: "Infrastructure CI account"
     });
 
-    const infraCiClusterAdminRole = new gcp.projects.IAMBinding("infraClusterAdmin", {
+    const roles = [
+      "roles/container.clusterAdmin",
+      "roles/iam.serviceAccountUser"
+    ];
+    
+    const infraCiRoles = roles.map(role => new gcp.projects.IAMMember(role, {
       project,
-      role: "roles/container.clusterAdmin",
-      members: [infraCI.email.apply(email => `serviceAccount:${email}`)],
-    });
+      role,
+      member: infraCI.email.apply(email => `serviceAccount:${email}`),
+    }));
 
     const infraCiKey = new gcp.serviceAccount.Key("infra", { 
       serviceAccountId: infraCI.name
