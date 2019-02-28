@@ -26,7 +26,8 @@ jobs:
             wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86_64.tar.gz
             tar -xf google-cloud-sdk-236.0.0-linux-x86_64.tar.gz
             ./google-cloud-sdk/install.sh --usage-reporting false --override-components core --quiet
+      - run: 
+          name: Pulumi update
+          command: |
             source ./google-cloud-sdk/path.bash.inc
-            # sudo cp google-cloud-sdk/bin/gcloud /usr/bin/gcloud
-      - pulumi/update:
-          stack: dev
+            pulumi update --stack dev --cwd . 
