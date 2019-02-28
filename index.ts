@@ -42,12 +42,12 @@ import { GCPIdentity } from './src/identity/gcp';
   };
 
   const opsView = new K8SOpsView("opsview", {}, defaultOpts);
-  // // const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
+  const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
 
   const ingress = new K8SIngress("ingress", {}, {
     ...defaultOpts,
-    // dependsOn: [opsView, jenkins]
-    dependsOn: [opsView]
+    dependsOn: [opsView, jenkins]
+    // dependsOn: [opsView]
   })
 
   // const argo = new K8SArgo("argo", {}, defaultOpts);

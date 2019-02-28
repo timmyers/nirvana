@@ -32,16 +32,16 @@ class K8SIngress extends pulumi.ComponentResource  {
               }
             }]
           }
-        // }, {
-        //   host: "jenkins.tmye.me",
-        //   http: {
-        //     paths: [{
-        //       backend: {
-        //         serviceName: "jenkins",
-        //         servicePort: 80
-        //       }
-        //     }]
-        //   }
+        }, {
+          host: "jenkins.tmye.me",
+          http: {
+            paths: [{
+              backend: {
+                serviceName: "jenkins",
+                servicePort: 80
+              }
+            }]
+          }
         }],
         tls: [
           {
