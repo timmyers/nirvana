@@ -3,11 +3,13 @@ import * as k8s from '@pulumi/kubernetes';
 import { GKECluster } from './gke'
 import { GKEExternalDNS } from './external_dns'
 import { K8SCertManager } from '../k8s_cert_manager'
+import { K8SPrometheus } from '../k8s_prometheus'
 
 interface Options {
   machineType: string
   externalDns?: boolean
   certManager?: boolean
+  prometheus?: boolean
 };
 
 class GCPK8SCluster extends pulumi.ComponentResource  {
@@ -17,6 +19,7 @@ class GCPK8SCluster extends pulumi.ComponentResource  {
     machineType, 
     externalDns, 
     certManager, 
+    prometheus,
   } : Options, opts?: pulumi.ComponentResourceOptions) {
     super("nirvana:gcp-k8s-cluster", name, { }, opts);
 
@@ -36,6 +39,9 @@ class GCPK8SCluster extends pulumi.ComponentResource  {
     }
     if (certManager == undefined || certManager) {
       const certManagerResource = new K8SCertManager("cert-manager", {}, defaultOpts);
+    }
+    if (prometheus == undefined || prometheus) {
+      const prometheus = new K8SPrometheus("prometheus", { gcp: true }, defaultOpts);
     }
 
 

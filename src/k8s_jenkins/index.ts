@@ -18,7 +18,7 @@ class K8SJenkins extends pulumi.ComponentResource  {
       }
     }, { parent: this });
 
-    const certManager = new k8s.helm.v2.Chart("jenkins", {
+    const jenkins = new k8s.helm.v2.Chart("jenkins", {
       namespace: "jenkins",
       repo: "stable",
       chart: "jenkins",

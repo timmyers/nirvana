@@ -22,9 +22,11 @@ import { NameComNameservers } from './src/name_com_nameservers'
   });
 
   const cluster = new GCPK8SCluster("cluster", {
-    machineType: 'g1-small'
+    machineType: 'g1-small',
+    externalDns: true,
+    certManager: true,
+    prometheus: false,
   });
-
 
   const defaultOpts = {
     providers: {
@@ -33,7 +35,7 @@ import { NameComNameservers } from './src/name_com_nameservers'
   };
 
   const opsView = new K8SOpsView("opsview", {}, defaultOpts);
-  const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
+  // const jenkins = new K8SJenkins("jenkins", {}, defaultOpts);
 
   const ingress = new K8SIngress("ingress", {}, {
     ...defaultOpts,
