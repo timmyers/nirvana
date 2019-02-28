@@ -20,7 +20,8 @@ class GCPIdentity extends pulumi.ComponentResource  {
 
     const roles = [
       "roles/container.clusterAdmin",
-      "roles/iam.serviceAccountUser"
+      "roles/iam.serviceAccountUser",
+      "roles/compute.instanceAdmin"
     ];
     
     const infraCiRoles = roles.map(role => new gcp.projects.IAMMember(role, {
