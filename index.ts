@@ -32,7 +32,7 @@ import { GCPIdentity } from './src/identity/gcp';
     machineType: 'g1-small',
     externalDns: true,
     certManager: true,
-    prometheus: false,
+    prometheus: true,
   });
 
   // const defaultOpts = {
@@ -51,13 +51,6 @@ import { GCPIdentity } from './src/identity/gcp';
   // })
 
   // const argo = new K8SArgo("argo", {}, defaultOpts);
-
-  // const metrics = new K8SKubeStateMetrics("kubestatemetrics", {}, {
-  //   providers: {
-  //     kubernetes: cluster.k8sProvider
-  //   }
-  // });
-
 })()
 
 

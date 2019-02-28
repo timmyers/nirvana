@@ -12,12 +12,17 @@ class K8SPrometheus extends pulumi.ComponentResource  {
 
     const defaultOpts = { parent: this }
 
+    const ns = new k8s.core.v1.Namespace("prometheus", {
+      metadata: { name: "prometheus" }
+    }, { parent: this });
+
     const prometheus = new k8s.helm.v2.Chart("prometheus", {
       namespace: "prometheus",
       repo: "stable",
-      chart: "prometheus",
-      version: "8.7.1",
-      values: { }
+      chart: "prometheus-operator",
+      version: "2.2.7",
+      values: { 
+      }
     }, defaultOpts);
   }
 }
