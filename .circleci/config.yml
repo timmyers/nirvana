@@ -20,5 +20,11 @@ jobs:
             tar -xf helm-v2.13.0-linux-amd64.tar.gz
             sudo cp linux-amd64/helm /usr/bin/helm
             helm init --client-only
+      - run:
+          name: Install gcloud
+          command: |
+            wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-236.0.0-linux-x86_64.tar.gz
+            tar -xf google-cloud-sdk-236.0.0-linux-x86_64.tar.gz
+            sudo cp google-cloud-sdk/bin/gcloud /usr/bin/gcloud
       - pulumi/update:
           stack: dev
