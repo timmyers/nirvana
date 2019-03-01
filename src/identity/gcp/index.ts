@@ -40,7 +40,8 @@ class GCPIdentity extends pulumi.ComponentResource  {
       JSON.parse(Buffer.from(key, "base64").toString("ascii")))
     );
 
-    this.infraCISecret.apply(i => console.log(JSON.stringify(i)))
+    // Print key
+    // this.infraCISecret.apply(i => console.log(JSON.stringify(i)))
 
     this.registerOutputs({
       infraCISecret: this.infraCISecret

@@ -4,7 +4,7 @@ import { GCPIdentity } from '../identity/gcp';
 
 const parseConfig = async () => {
   const config: any = await new Promise((req, rej) => {
-    readYaml('../config.yml', (err: Error, data: any) => {
+    readYaml('../infrastructure.yml', (err: Error, data: any) => {
       if (err) rej(err);
       req(data);
     })
@@ -18,8 +18,7 @@ const parseConfig = async () => {
       const identity: any = item.identity;
       const identityUnused = new GCPIdentity('infra', identity.gcp);
     }
-
   });
-}
+};
 
 export default parseConfig;

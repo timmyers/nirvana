@@ -1,6 +1,6 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as k8s from '@pulumi/kubernetes';
-import { GKECluster } from './gke';
+import GKECluster from './gke';
 
 interface Options {
   machineType: string;

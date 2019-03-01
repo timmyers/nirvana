@@ -1,33 +1,33 @@
 
 import * as pulumi from '@pulumi/pulumi';
 import GCPK8SCluster from './gcp';
-import { K8SExternalDNS } from './k8s_external_dns';
+import K8SExternalDNS from './k8s_external_dns';
 import { K8SCertManager } from './k8s_cert_manager';
 import K8SIngressNginx from './k8s_ingress_nginx';
 import K8SOpsView from './k8s_opsview';
 
 interface Options {
-  gcp?: any
-  externalDns?: any
-  certManager?: any
-  ingressNginx?: any
-  opsView?: any
-};
+  gcp?: any;
+  externalDns?: any;
+  certManager?: any;
+  ingressNginx?: any;
+  opsView?: any;
+}
 
-class K8SCluster extends pulumi.ComponentResource  {
-  constructor(name: string, { 
+class K8SCluster extends pulumi.ComponentResource {
+  public constructor(name: string, { 
     gcp,
     externalDns,
     certManager,
     ingressNginx,
     opsView,
-  } : Options,  opts?: pulumi.ComponentResourceOptions) {
+  }: Options, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:k8s-cluster', name, { }, opts);
 
     const defaultOpts = { parent: this }
 
     if (gcp !== undefined) {
-      const clusterUnused = new GCPK8SCluster('gcp-k8s-cluster', gcp, defaultOpts);
+      const clusterIgnored = new GCPK8SCluster('gcp-k8s-cluster', gcp, defaultOpts);
     }
 
     if (externalDns !== undefined) {

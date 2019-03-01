@@ -1,22 +1,19 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as k8s from '@pulumi/kubernetes';
 
+class K8SExternalDNS extends pulumi.ComponentResource {
+  public constructor(name: string, settingsIgnored: {}, opts?: pulumi.ComponentResourceOptions) {
+    super('nirvana:k8s-external-dns', name, { }, opts);
 
-interface Options {
-};
+    const defaultOpts = { parent: this };
 
-class K8SExternalDNS extends pulumi.ComponentResource  {
-  constructor(name: string, { } : Options, opts?: pulumi.ComponentResourceOptions) {
-    super("nirvana:k8s-external-dns", name, { }, opts);
-
-    const defaultOpts = { parent: this }
-    console.log(process.cwd())
-
-    const fileName = `external-dns.yml`;
-    const externalDNS = new k8s.yaml.ConfigFile(fileName, {
+    const fileName = 'external-dns.yml';
+    const externalDNSIgnored = new k8s.yaml.ConfigFile(fileName, {
       file: `${__dirname}/${fileName}`,
     }, defaultOpts);
+
+    this.registerOutputs();
   }
 }
 
-export { K8SExternalDNS }
+export default K8SExternalDNS;

@@ -125,4 +125,4 @@ users:
   }
 }
 
-export { GKECluster }
+export default GKECluster;

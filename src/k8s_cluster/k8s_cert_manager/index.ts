@@ -4,7 +4,7 @@ import * as k8s from '@pulumi/kubernetes';
 
 class K8SCertManager extends pulumi.ComponentResource {
   public constructor(name: string, settingsIgnored: {}, opts?: pulumi.ComponentResourceOptions) {
-    super('nirvana:gke-cert-manager', name, { }, opts);
+    super('nirvana:k8s-cert-manager', name, { }, opts);
 
     const defaultOpts = { parent: this };
 

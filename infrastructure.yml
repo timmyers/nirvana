@@ -1,0 +1,13 @@
+- cluster:
+    name: nirvana
+    gcp:
+      machineType: g1-small
+    externalDns: true
+    # certManager: true
+    # nginxIngress: true
+    # prometheus: false
+
+- identity:
+    gcp:
+      project: nirvana-232117
+      serviceAccount: true
