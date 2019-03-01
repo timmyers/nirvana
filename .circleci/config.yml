@@ -6,13 +6,11 @@ jobs:
     docker:
       - image: circleci/node:10
     working_directory: ~/repo
-    environment:
-      GOOGLE_CREDENTIALS: $GCP_JSON
     steps:
       - checkout
       - pulumi/login
       - run: yarn
-      - run: echo $GCP_JSON > gcp.json
+      - run: echo $GOOGLE_CREDENTIALS > gcp.json
       - run:
           name: Install helm
           command: |
