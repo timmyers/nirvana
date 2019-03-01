@@ -1,9 +1,5 @@
-import GCPK8SCluster from './gcp_cluster';
-import { K8SOpsView } from './k8s_opsview';
-import { K8SIngress } from './k8s_ingress';
 import { GCPDNSZone } from './gcp_dns_zone';
 import { NameComNameservers } from './name_com_nameservers';
-import { GCPIdentity } from './identity/gcp';
 import parseConfig from './config';
 
 (async () => {
@@ -15,9 +11,6 @@ import parseConfig from './config';
     ],
   });
 
-  const gcpIdentityIgnored = new GCPIdentity('infra', {
-    project: 'nirvana-232117',
-  });
 
   await parseConfig();
 

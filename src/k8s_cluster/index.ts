@@ -4,7 +4,7 @@ import GCPK8SCluster from './gcp';
 import { K8SExternalDNS } from './k8s_external_dns';
 import { K8SCertManager } from './k8s_cert_manager';
 import K8SIngressNginx from './k8s_ingress_nginx';
-import K8SOpsView from './k8s_ops_view';
+import K8SOpsView from './k8s_opsview';
 
 interface Options {
   gcp?: any
