@@ -3,55 +3,57 @@ import * as gcp from '@pulumi/gcp';
 import * as k8s from '@pulumi/kubernetes';
 
 interface Options {
-  machineType: string
-};
+  machineType: string;
+}
 
-class GKECluster extends pulumi.ComponentResource  {
-  cluster: pulumi.Output<gcp.container.Cluster>
-  k8sProvider: k8s.Provider
+class GKECluster extends pulumi.ComponentResource {
+  public cluster: pulumi.Output<gcp.container.Cluster>;
 
-  constructor(name: string, { machineType } : Options, parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
-    super("nirvana:gcp-cluster", name, {}, { parent, ...opts, });
+  public k8sProvider: k8s.Provider;
 
-    const defaultOpts = { parent: this }
+  public constructor(name: string, { machineType }: Options,
+    parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
+    super('nirvana:gcp-cluster', name, {}, { parent, ...opts });
 
-    const cluster = new gcp.container.Cluster("cluster", {
-      minMasterVersion: "1.11.7-gke.4",
+    const defaultOpts = { parent: this };
+
+    const cluster = new gcp.container.Cluster('cluster', {
+      minMasterVersion: '1.11.7-gke.4',
       nodePools: [
         {
-          name: "default",
+          name: 'default',
           initialNodeCount: 2,
           autoscaling: {
             minNodeCount: 1,
-            maxNodeCount: 5
+            maxNodeCount: 5,
           },
           nodeConfig: {
             machineType,
             diskSizeGb: 30,
-            diskType: "pd-standard",
+            diskType: 'pd-standard',
             oauthScopes: [
-              "https://www.googleapis.com/auth/compute",
-              "https://www.googleapis.com/auth/devstorage.read_only",
-              "https://www.googleapis.com/auth/logging.write",
-              "https://www.googleapis.com/auth/monitoring",
-              "https://www.googleapis.com/auth/ndev.clouddns.readwrite",
+              'https://www.googleapis.com/auth/compute',
+              'https://www.googleapis.com/auth/devstorage.read_only',
+              'https://www.googleapis.com/auth/logging.write',
+              'https://www.googleapis.com/auth/monitoring',
+              'https://www.googleapis.com/auth/ndev.clouddns.readwrite',
             ],
           },
           management: {
             autoRepair: true,
-            autoUpgrade: true
+            autoUpgrade: true,
           },
-        }
+        },
       ],
       addonsConfig: {
         horizontalPodAutoscaling: { disabled: true },
         kubernetesDashboard: { disabled: true },
         httpLoadBalancing: { disabled: false },
         networkPolicyConfig: { disabled: true }
-      }
+      },
     }, {
       // protect: true
-      ...defaultOpts
+      ...defaultOpts,
     });
 
     const k8sConfig = pulumi.
@@ -87,21 +89,21 @@ users:
 
 
     // Create admin role binding so we can create other role bindings
-    const adminClusterRoleBinding = new k8s.rbac.v1beta1.ClusterRoleBinding("admin", {
+    const adminClusterRoleBinding = new k8s.rbac.v1beta1.ClusterRoleBinding('admin', {
       roleRef: {
-        name: "cluster-admin",
-        apiGroup: "rbac.authorization.k8s.io",
-        kind: "ClusterRole"
+        name: 'cluster-admin',
+        apiGroup: 'rbac.authorization.k8s.io',
+        kind: 'ClusterRole'
       },
       subjects: [
         {
-          kind: "User",
-          name: "TimMyers09@gmail.com"
+          kind: 'User',
+          name: 'TimMyers09@gmail.com'
         }
       ]
     }, {
       ...defaultOpts,
-      provider: new k8s.Provider("k8s-internal", {
+      provider: new k8s.Provider('k8s-internal', {
           kubeconfig: k8sConfig,
       }, defaultOpts)
     });
@@ -112,7 +114,7 @@ users:
       adminClusterRoleBinding.id,
     ]).apply(() => cluster)
 
-    this.k8sProvider = new k8s.Provider("k8s", {
+    this.k8sProvider = new k8s.Provider('k8s', {
         kubeconfig: adminClusterRoleBinding.id.apply(() => k8sConfig),
     }, defaultOpts)
 

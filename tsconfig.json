@@ -7,6 +7,7 @@
         ],
         "module": "commonjs",
         "moduleResolution": "node",
+        "baseUrl": "./src",
         "sourceMap": true,
         "experimentalDecorators": true,
         "pretty": true,
@@ -17,6 +18,9 @@
         "strictNullChecks": true
     },
     "files": [
-        "index.ts"
+        "src/index.ts"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

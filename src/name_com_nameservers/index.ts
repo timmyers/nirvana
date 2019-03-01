@@ -2,9 +2,6 @@ import * as pulumi from '@pulumi/pulumi';
 import axios from 'axios';
 
 class NameComProvider implements pulumi.dynamic.ResourceProvider {
-  constructor() {
-  }
-
   public async create(inputs: any) {
 
     const nameServers = inputs.nameServers.map((ns: string) => {
