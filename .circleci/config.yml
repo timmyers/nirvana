@@ -7,7 +7,7 @@ jobs:
       - image: circleci/node:10
     working_directory: ~/repo
     environment:
-      GOOGLE_CREDENTIALS: gcp.json
+      GOOGLE_CREDENTIALS: $GCP_JSON
     steps:
       - checkout
       - pulumi/login
