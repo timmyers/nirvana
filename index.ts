@@ -32,7 +32,7 @@ import { GCPIdentity } from './src/identity/gcp';
     machineType: 'g1-small',
     externalDns: true,
     certManager: true,
-    prometheus: true,
+    prometheus: false,
   });
 
   // const defaultOpts = {
