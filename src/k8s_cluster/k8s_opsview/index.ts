@@ -18,4 +18,4 @@ class K8SOpsView extends pulumi.ComponentResource  {
   }
 }
 
-export { K8SOpsView }
+export default K8SOpsView;

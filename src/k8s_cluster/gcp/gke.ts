@@ -13,7 +13,7 @@ class GKECluster extends pulumi.ComponentResource {
 
   public constructor(name: string, { machineType }: Options,
     parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
-    super('nirvana:gcp-cluster', name, {}, { parent, ...opts });
+    super('nirvana:gke-cluster', name, {}, { parent, ...opts });
 
     const defaultOpts = { parent: this };
 

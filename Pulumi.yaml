@@ -1,4 +1,4 @@
 name: nirvana
 runtime: nodejs
 description: A minimal AWS TypeScript Pulumi program
-main: src/index.ts
+main: src/

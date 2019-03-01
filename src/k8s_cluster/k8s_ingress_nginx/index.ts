@@ -5,7 +5,7 @@ interface Options {
   loadBalancer?: boolean;
 }
 
-class K8sIngressNginx extends pulumi.ComponentResource {
+class K8SIngressNginx extends pulumi.ComponentResource {
   public constructor(name: string, { loadBalancer }: Options, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:k8s-ingress-nginx', name, { }, opts);
 
@@ -43,4 +43,4 @@ class K8sIngressNginx extends pulumi.ComponentResource {
   }
 }
 
-export default K8sIngressNginx;
+export default K8SIngressNginx;

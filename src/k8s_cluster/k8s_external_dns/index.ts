@@ -5,11 +5,12 @@ import * as k8s from '@pulumi/kubernetes';
 interface Options {
 };
 
-class GKEExternalDNS extends pulumi.ComponentResource  {
+class K8SExternalDNS extends pulumi.ComponentResource  {
   constructor(name: string, { } : Options, opts?: pulumi.ComponentResourceOptions) {
-    super("nirvana:gke-external-dns", name, { }, opts);
+    super("nirvana:k8s-external-dns", name, { }, opts);
 
     const defaultOpts = { parent: this }
+    console.log(process.cwd())
 
     const fileName = `external-dns.yml`;
     const externalDNS = new k8s.yaml.ConfigFile(fileName, {
@@ -18,4 +19,4 @@ class GKEExternalDNS extends pulumi.ComponentResource  {
   }
 }
 
-export { GKEExternalDNS }
+export { K8SExternalDNS }
