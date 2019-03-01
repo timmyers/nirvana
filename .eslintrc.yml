@@ -1,0 +1,13 @@
+extends: 
+  - airbnb-base
+  - plugin:@typescript-eslint/recommended
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: "@typescript-eslint/parser"
+plugins: 
+  - "@typescript-eslint"
+rules: 
+  "@typescript-eslint/indent":
+    - error
+    - 2
