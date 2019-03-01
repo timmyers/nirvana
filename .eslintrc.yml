@@ -1,4 +1,4 @@
-extends: 
+extends:
   - airbnb-base
   - plugin:@typescript-eslint/recommended
 globals:
@@ -9,6 +9,7 @@ parserOptions:
   project: ./tsconfig.json
 plugins: 
   - "@typescript-eslint"
+  - import
 rules: 
   "@typescript-eslint/indent":
     - error

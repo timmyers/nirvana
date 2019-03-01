@@ -58,9 +58,9 @@ class GKECluster extends pulumi.ComponentResource {
 
     const k8sConfig = pulumi
       .all([cluster.name, cluster.endpoint, cluster.masterAuth])
-      .apply(([name, endpoint, auth]) => {
-          const context = `${gcp.config.project}_${gcp.config.zone}_${name}`;
-          return `apiVersion: v1
+      .apply(([contextName, endpoint, auth]) => {
+        const context = `${gcp.config.project}_${gcp.config.zone}_${name}`;
+        return `apiVersion: v1
 clusters:
 - cluster:
     certificate-authority-data: ${auth.clusterCaCertificate}
@@ -93,32 +93,32 @@ users:
       roleRef: {
         name: 'cluster-admin',
         apiGroup: 'rbac.authorization.k8s.io',
-        kind: 'ClusterRole'
+        kind: 'ClusterRole',
       },
       subjects: [
         {
           kind: 'User',
-          name: 'TimMyers09@gmail.com'
-        }
-      ]
+          name: 'TimMyers09@gmail.com',
+        },
+      ],
     }, {
       ...defaultOpts,
       provider: new k8s.Provider('k8s-internal', {
-          kubeconfig: k8sConfig,
-      }, defaultOpts)
+        kubeconfig: k8sConfig,
+      }, defaultOpts),
     });
 
     // Wait for cluster and admin role
     this.cluster = pulumi.all([
       cluster.id, 
       adminClusterRoleBinding.id,
-    ]).apply(() => cluster)
+    ]).apply(() => cluster);
 
     this.k8sProvider = new k8s.Provider('k8s', {
-        kubeconfig: adminClusterRoleBinding.id.apply(() => k8sConfig),
-    }, defaultOpts)
+      kubeconfig: adminClusterRoleBinding.id.apply(() => k8sConfig),
+    }, defaultOpts);
 
-    this.registerOutputs({ 
+    this.registerOutputs({
       cluster: this.cluster,
       k8sProvider: this.k8sProvider,
     });

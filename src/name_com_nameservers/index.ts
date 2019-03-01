@@ -3,7 +3,6 @@ import axios from 'axios';
 
 class NameComProvider implements pulumi.dynamic.ResourceProvider {
   public async create(inputs: any) {
-
     const nameServers = inputs.nameServers.map((ns: string) => {
       console.log(ns);
       if (ns[ns.length - 1] == '.') {
