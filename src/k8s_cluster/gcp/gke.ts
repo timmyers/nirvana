@@ -49,16 +49,16 @@ class GKECluster extends pulumi.ComponentResource {
         horizontalPodAutoscaling: { disabled: true },
         kubernetesDashboard: { disabled: true },
         httpLoadBalancing: { disabled: false },
-        networkPolicyConfig: { disabled: true }
+        networkPolicyConfig: { disabled: true },
       },
     }, {
       // protect: true
       ...defaultOpts,
     });
 
-    const k8sConfig = pulumi.
-      all([ cluster.name, cluster.endpoint, cluster.masterAuth ]).
-      apply(([ name, endpoint, auth ]) => {
+    const k8sConfig = pulumi
+      .all([cluster.name, cluster.endpoint, cluster.masterAuth])
+      .apply(([name, endpoint, auth]) => {
           const context = `${gcp.config.project}_${gcp.config.zone}_${name}`;
           return `apiVersion: v1
 clusters:

@@ -6,7 +6,7 @@ interface Options {
   machineType: string;
 }
 
-class GCPK8SCluster extends pulumi.ComponentResource  {
+class GCPK8SCluster extends pulumi.ComponentResource {
   public k8sProvider: k8s.Provider;
 
   public constructor(name: string, {

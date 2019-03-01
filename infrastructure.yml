@@ -1,11 +1,11 @@
-- cluster:
-    name: nirvana
-    gcp:
-      machineType: g1-small
-    externalDns: true
-    # certManager: true
-    # nginxIngress: true
-    # prometheus: false
+# - cluster:
+#     name: nirvana
+#     gcp:
+#       machineType: g1-small
+#     externalDns: true
+#     certManager: true
+#     nginxIngress: true
+#     # prometheus: true
 
 - identity:
     gcp:
