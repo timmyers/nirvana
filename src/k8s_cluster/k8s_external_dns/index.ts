@@ -40,7 +40,7 @@ class K8SExternalDNS extends pulumi.ComponentResource {
           if (dnsProvider === 'cloudflare') {
             y.spec.template.spec.containers[0].args.push('--cloudflare-proxied');
 
-            y.env = [{ // eslint-disable-line no-param-reassign
+            y.spec.template.spec.containers[0].env = [{ // eslint-disable-line no-param-reassign
               name: 'CF_API_EMAIL',
               valueFrom: {
                 secretKeyRef: {
@@ -53,7 +53,7 @@ class K8SExternalDNS extends pulumi.ComponentResource {
               valueFrom: {
                 secretKeyRef: {
                   name: 'cloudflare',
-                  key: 'paiKey',
+                  key: 'apiKey',
                 },
               },
             }];
@@ -71,7 +71,7 @@ class K8SExternalDNS extends pulumi.ComponentResource {
       const cloudflareSecretIgnored = new k8s.core.v1.Secret('cloudflare', {
         metadata: { name: 'cloudflare' },
         type: 'Opaque',
-        data: {
+        stringData: {
           email: process.env.CLOUDFLARE_EMAIL,
           apiKey: process.env.CLOUDFLARE_APIKEY,
         },

@@ -47,6 +47,4 @@ import parseConfig from './config';
   //   // dependsOn: [opsView, jenkins]
   //   // dependsOn: [opsViewIgnored]
   // });
-
-  // const argo = new K8SArgo('argo', {}, defaultOpts);
 })();

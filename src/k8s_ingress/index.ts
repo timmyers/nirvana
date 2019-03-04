@@ -10,7 +10,7 @@ class K8SIngress extends pulumi.ComponentResource {
   public constructor(name: string, settingsIgnored: {}, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:k8s-ingress', name, { }, opts);
 
-    const defaultOpts = { parent: this }
+    const defaultOpts = { parent: this };
 
     const ingress = new k8s.extensions.v1beta1.Ingress('ingress', {
       metadata: {

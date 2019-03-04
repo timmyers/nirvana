@@ -9,7 +9,7 @@
 #       domainFilter: tmye.me
 #       upsertOnly: false
 #     certManager: true
-#     nginxIngress: true
+#     ingressNginx: true
 #     opsView: true
 #     # prometheus: true
 
