@@ -5,6 +5,7 @@ import * as k8s from '@pulumi/kubernetes';
 interface Options {
   machineType: string;
   maxNodeCount: number;
+  stackDriver: boolean;
 }
 
 class GKECluster extends pulumi.ComponentResource {
@@ -15,6 +16,7 @@ class GKECluster extends pulumi.ComponentResource {
   public constructor(name: string, {
     machineType,
     maxNodeCount,
+    stackDriver,
   }: Options,
   parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:gke-cluster', name, {}, { parent, ...opts });
@@ -49,6 +51,8 @@ class GKECluster extends pulumi.ComponentResource {
           },
         },
       ],
+      loggingService: stackDriver ? 'logging.googleapis.com/kubernetes' : 'none',
+      monitoringService: stackDriver ? 'monitoring.googleapis.com/kubernetes' : 'none',
       // ipAllocationPolicy: {
       //   clusterIpv4CidrBlock: '10.128.0.0/20',
       // },

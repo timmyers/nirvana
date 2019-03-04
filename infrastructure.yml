@@ -3,6 +3,7 @@
 #     gcp:
 #       machineType: g1-small
 #       maxNodeCount: 5
+#       stackDriver: true
 #     externalDns:
 #       # dnsProvider: google
 #       dnsProvider: cloudflare

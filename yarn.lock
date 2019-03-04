@@ -102,10 +102,10 @@
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/kubernetes@latest":
-  version "0.20.3"
-  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-0.20.3.tgz#ceb7bcede833bb62783230cd08341ff81ba8c057"
-  integrity sha512-8ZbDuDKZaHp7TWBBurWYStwb5je2C1VEVDJRJis8qju679DO8VQowIr9PSBV3AJJBlrvIM5A4Kg/M8+oDhfZqQ==
+"@pulumi/kubernetes@^0.20.4":
+  version "0.20.4"
+  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-0.20.4.tgz#cae5fe1ceb9d332ef289b79196156400355abb7e"
+  integrity sha512-pMMpmvLfUOhmJeEuwa+Jgwj09YskhfimEp0BmleXCFfXocW89c859EjRLGdcIB+B7IGmHJrnlGoiXNcC6rUH9w==
   dependencies:
     "@pulumi/pulumi" "^0.16.14"
     "@types/glob" "^5.0.35"
@@ -118,10 +118,27 @@
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/pulumi@^0.16.0", "@pulumi/pulumi@^0.16.14", "@pulumi/pulumi@^0.16.3", "@pulumi/pulumi@latest":
+"@pulumi/pulumi@^0.16.0", "@pulumi/pulumi@^0.16.3":
   version "0.16.17"
   resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-0.16.17.tgz#765bf6bbd20e00fef34918be27aff2b1a4d21a85"
   integrity sha512-KOz1JyKFnJkmsGzlk5BskkPRo4lJOHC1vPVyUXiyejzysjy4JDyrOdGa5osCOl6wgJ/aOuaUIxSr75KrVSQ/Mg==
+  dependencies:
+    google-protobuf "^3.5.0"
+    grpc "^1.12.2"
+    minimist "^1.2.0"
+    normalize-package-data "^2.4.0"
+    protobufjs "^6.8.6"
+    read-package-tree "^5.2.1"
+    require-from-string "^2.0.1"
+    source-map-support "^0.4.16"
+    ts-node "^7.0.0"
+    typescript "^3.0.0"
+    upath "^1.1.0"
+
+"@pulumi/pulumi@^0.16.14", "@pulumi/pulumi@^0.16.18":
+  version "0.16.18"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-0.16.18.tgz#05e87eeb71c737986e33dc3113284630f20410c0"
+  integrity sha512-VBOvH47WcoSjQu1rxvizcqMZlLl9+LKidrCxz4Xt0qVF75Ue3TEvLPRf2eMpYnurJsUtv02J9AeGVsNKuw2YcA==
   dependencies:
     google-protobuf "^3.5.0"
     grpc "^1.12.2"
@@ -213,15 +230,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@latest":
-  version "11.9.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.5.tgz#011eece9d3f839a806b63973e228f85967b79ed3"
-  integrity sha512-vVjM0SVzgaOUpflq4GYBvCpozes8OgIIS5gVXVka+OfK3hvnkC1i93U8WiY2OtNE4XUWyyy/86Kf6e0IHTQw1Q==
+"@types/node@*", "@types/node@^11.10.4":
+  version "11.10.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.4.tgz#3f5fc4f0f322805f009e00ab35a2ff3d6b778e42"
+  integrity sha512-wa09itaLE8L705aXd8F80jnFpxz3Y1/KRHfKsYL2bPc0XF+wEWu8sR9n5bmeu8Ba1N9z2GRNzm/YdHcghLkLKg==
 
 "@types/node@^10.1.0":
-  version "10.12.27"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.27.tgz#eb3843f15d0ba0986cc7e4d734d2ee8b50709ef8"
-  integrity sha512-e9wgeY6gaY21on3ve0xAjgBVjGDWq/xUteK0ujsE53bUoxycMkqfnkUgMt6ffZtykZ5X12Mg3T7Pw4TRCObDKg==
+  version "10.12.29"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.29.tgz#c2c8d2d27bb55649fbafe8ea1731658421f38acf"
+  integrity sha512-J/tnbnj8HcsBgCe2apZbdUpQ7hs4d7oZNTYA5bekWdP0sr2NGsOpI/HRdDroEi209tEvTcTtxhD0FfED3DhEcw==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -1004,9 +1021,9 @@ globals@^11.7.0:
   integrity sha512-WHq43gS+6ufNOEqlrDBxVEbb8ntfXrfAUU2ZOpCxrBdGKW3gyv8mCxAfIBD0DroPKGrJ2eSsXsLtY9MPntsyTw==
 
 google-protobuf@^3.5.0:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.6.1.tgz#7ef58e2bea137a93cdaf5cfd5afa5f6abdd92025"
-  integrity sha512-SJYemeX5GjDLPnadcmCNQePQHCS4Hl5fOcI/JawqDIYFhCmrtYAjcx/oTQx/Wi8UuCuZQhfvftbmPePPAYHFtA==
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.7.0.tgz#5c7228b68d24a7c93706c1a44efdb8ee883cea43"
+  integrity sha512-QZwgOBPfvnAdnYA+tizEs9CbE42mMXFPGCmYAh0podfJbGPkBIEC6vR9gMSGxjaSB8t2GCGLhOHiX9OrseOWCA==
 
 graceful-fs@^4.1.2:
   version "4.1.15"

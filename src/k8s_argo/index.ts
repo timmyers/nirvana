@@ -25,4 +25,4 @@ class K8SArgo extends pulumi.ComponentResource {
   }
 }
 
-export default K8SArgo;
+export default K8SArgo

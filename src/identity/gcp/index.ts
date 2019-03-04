@@ -16,7 +16,7 @@ class GCPIdentity extends pulumi.ComponentResource {
     const infraCI = new gcp.serviceAccount.Account('infra', {
       project,
       accountId: 'infra-ci',
-      displayName: 'Infrastructure CI account'
+      displayName: 'Infrastructure CI account',
     }, defaultOpts);
 
     const roles = [
