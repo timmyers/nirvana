@@ -2,9 +2,15 @@
 #     name: nirvana
 #     gcp:
 #       machineType: g1-small
-#     externalDns: true
+#       maxNodeCount: 5
+#     externalDns:
+#       # dnsProvider: google
+#       dnsProvider: cloudflare
+#       domainFilter: tmye.me
+#       upsertOnly: false
 #     certManager: true
 #     nginxIngress: true
+#     opsView: true
 #     # prometheus: true
 
 - identity:

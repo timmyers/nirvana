@@ -1,5 +1,5 @@
 config:
   aws:profile: personal
-  aws:region: us-east-1
+  aws:region: us-central-1
   gcp:project: nirvana-232117
   gcp:zone: us-central1-a

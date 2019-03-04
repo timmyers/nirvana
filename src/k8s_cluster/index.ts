@@ -1,6 +1,6 @@
 import * as pulumi from '@pulumi/pulumi';
 import GCPK8SCluster from './gcp';
-import K8SExternalDNS from './k8s_external_dns';
+import K8SExternalDNS, { K8SExternalDNSOptions } from './k8s_external_dns';
 import { K8SCertManager } from './k8s_cert_manager';
 import K8SIngressNginx from './k8s_ingress_nginx';
 import K8SOpsView from './k8s_opsview';
@@ -8,7 +8,7 @@ import K8SPrometheus from './k8s_prometheus';
 
 interface Options {
   gcp?: any;
-  externalDns?: any;
+  externalDns?: K8SExternalDNSOptions;
   certManager?: any;
   ingressNginx?: any;
   opsView?: any;

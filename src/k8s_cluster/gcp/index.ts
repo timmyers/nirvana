@@ -4,6 +4,7 @@ import GKECluster from './gke';
 
 interface Options {
   machineType: string;
+  maxNodeCount: number;
 }
 
 class GCPK8SCluster extends pulumi.ComponentResource {
@@ -11,11 +12,13 @@ class GCPK8SCluster extends pulumi.ComponentResource {
 
   public constructor(name: string, {
     machineType,
+    maxNodeCount,
   }: Options, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:gcp-k8s-cluster', name, { }, opts);
 
     const cluster = new GKECluster('gke-cluster', {
       machineType,
+      maxNodeCount,
     }, this);
 
     this.k8sProvider = cluster.k8sProvider;

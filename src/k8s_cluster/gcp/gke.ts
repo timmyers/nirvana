@@ -4,6 +4,7 @@ import * as k8s from '@pulumi/kubernetes';
 
 interface Options {
   machineType: string;
+  maxNodeCount: number;
 }
 
 class GKECluster extends pulumi.ComponentResource {
@@ -11,8 +12,11 @@ class GKECluster extends pulumi.ComponentResource {
 
   public k8sProvider: k8s.Provider;
 
-  public constructor(name: string, { machineType }: Options,
-    parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
+  public constructor(name: string, {
+    machineType,
+    maxNodeCount,
+  }: Options,
+  parent: pulumi.Resource, opts?: pulumi.ComponentResourceOptions) {
     super('nirvana:gke-cluster', name, {}, { parent, ...opts });
 
     const defaultOpts = { parent: this };
@@ -25,7 +29,7 @@ class GKECluster extends pulumi.ComponentResource {
           initialNodeCount: 2,
           autoscaling: {
             minNodeCount: 1,
-            maxNodeCount: 5,
+            maxNodeCount,
           },
           nodeConfig: {
             machineType,
@@ -45,6 +49,9 @@ class GKECluster extends pulumi.ComponentResource {
           },
         },
       ],
+      // ipAllocationPolicy: {
+      //   clusterIpv4CidrBlock: '10.128.0.0/20',
+      // },
       addonsConfig: {
         horizontalPodAutoscaling: { disabled: true },
         kubernetesDashboard: { disabled: true },
@@ -58,7 +65,7 @@ class GKECluster extends pulumi.ComponentResource {
 
     const k8sConfig = pulumi
       .all([cluster.name, cluster.endpoint, cluster.masterAuth])
-      .apply(([contextName, endpoint, auth]) => {
+      .apply(([contextNameIgnored, endpoint, auth]) => {
         const context = `${gcp.config.project}_${gcp.config.zone}_${name}`;
         return `apiVersion: v1
 clusters:
