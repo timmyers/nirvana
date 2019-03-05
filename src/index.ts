@@ -1,4 +1,4 @@
-// import { GCPDNSZone } from './gcp_dns_zone';
+import { GCPDNSZone } from './gcp_dns_zone';
 import { NameComNameservers } from './name_com_nameservers';
 import parseConfig from './config';
 
