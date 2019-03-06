@@ -1,6 +1,10 @@
+import * as dotenv from 'dotenv';
 import { GCPDNSZone } from './gcp_dns_zone';
 import { NameComNameservers } from './name_com_nameservers';
 import parseConfig from './config';
+
+// Load env var file
+dotenv.config();
 
 (async () => {
   const nameServersIgnored = new NameComNameservers('tmye.me', {

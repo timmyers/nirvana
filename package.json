@@ -1,6 +1,7 @@
 {
     "name": "aws-typescript",
     "devDependencies": {
+        "@types/dotenv": "^6.1.0",
         "@types/node": "^11.10.4",
         "@typescript-eslint/eslint-plugin": "^1.4.2",
         "@typescript-eslint/parser": "^1.4.2",
@@ -16,6 +17,7 @@
         "@pulumi/pulumi": "^0.16.18",
         "@types/tar": "^4.0.0",
         "axios": "^0.18.0",
+        "dotenv": "^6.2.0",
         "read-yaml": "^1.1.0",
         "tar": "^4.4.8"
     }
